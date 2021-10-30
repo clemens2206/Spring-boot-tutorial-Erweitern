@@ -1,0 +1,64 @@
+server:
+  port: '8082'
+spring:
+  profiles:
+    active: qa
+
+---
+
+spring:
+  profiles: dev
+  datasource:
+    username: root
+    url: jdbc:mysql://localhost:3306/dcbapp
+    password: ''
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: 'true'
+welcome:
+  message: Welcome too Daily Code Buffer!!
+
+---
+
+  spring:
+    profiles: qa
+    datasource:
+      username: root
+      url: jdbc:mysql://localhost:3306/dcbapp-qa
+      password: ''
+    jpa:
+      hibernate:
+        ddl-auto: update
+      show-sql: 'true'
+  welcome:
+    message: Welcome too Daily Code Buffer!!
+
+  management:
+    endpoints:
+      web:
+        exposure:
+          include: "*"
+
+---
+
+    spring:
+
+      profiles: prod
+      datasource:
+        username: root
+        url: jdbc:mysql://localhost:3306/dcbapp-prod
+        password: ''
+      jpa:
+        hibernate:
+          ddl-auto: update
+        show-sql: 'true'
+    welcome:
+      message: Welcome too Daily Code Buffer!!
+
+
+
+---
+
+
+
