@@ -1,16 +1,16 @@
 package com.dailycodebuffer.Springboot.tutorial.controller;
 
 import com.dailycodebuffer.Springboot.tutorial.entity.Employee;
+import com.dailycodebuffer.Springboot.tutorial.error.EmployeeNotFoundException;
 import com.dailycodebuffer.Springboot.tutorial.repository.EmployeeRepository;
 import com.dailycodebuffer.Springboot.tutorial.service.EmployeeService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 public class EmployeeController {
@@ -24,6 +24,17 @@ public class EmployeeController {
     public Employee saveEmployee(@Valid @RequestBody Employee employee){
         LOGGER.info("Inside saveEmployee of EmloyeeController");
         return employeeService.saveEmployee(employee);
+    }
+
+    @GetMapping("/employees")
+    public List<Employee> fetchEmployeeList(){
+        LOGGER.info("Inside fetchEmployeeList of EmployeeController");
+        return employeeService.fetchEmployeeList();
+    }
+
+    @GetMapping("/employees/{id}")
+    public Employee fetchEmployeeById(@PathVariable("id") Long employeeId) throws EmployeeNotFoundException{
+        return employeeService.fetchEmployeeById(employeeId);
     }
 
 }
