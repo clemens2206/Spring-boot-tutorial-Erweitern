@@ -22,7 +22,7 @@ public class Employee {
             allocationSize = 1
     )
     @GeneratedValue(
-            strategy = GenerationType.SEQUENCE,
+            strategy = GenerationType.AUTO,
             generator = "employee_sequence"
     )
     private Long employeeId;
@@ -38,5 +38,6 @@ public class Employee {
             referencedColumnName = "departmentId"
     )
     private Department department;
+
 
 }
