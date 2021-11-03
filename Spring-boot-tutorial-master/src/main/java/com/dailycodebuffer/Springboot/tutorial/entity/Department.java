@@ -4,10 +4,7 @@ import lombok.*;
 import org.hibernate.validator.constraints.Length;
 import org.springframework.web.bind.annotation.PathVariable;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.*;
 
 @Entity
@@ -18,23 +15,23 @@ import javax.validation.constraints.*;
 public class Department {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @SequenceGenerator(
+            name = "department_sequence",
+            sequenceName = "department_sequence",
+            allocationSize = 1
+    )
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "department_sequence"
+    )
     private Long departmentId;
 
     @NotBlank(message = "Please Add Department Name")
-    /*@Length(max = 5, min = 1)
-    @Size(max = 10, min = 0)
-    @Email
-    @Positive
-    @Negative
-    @PositiveOrZero
-    @NegativeOrZero
-    @Future
-    @Past
-    @PastOrPresent*/
     private String departmentName;
     private String departmentAddress;
     private String departmentCode;
+
+
 
 
 }
