@@ -11,4 +11,6 @@ public interface EmployeeService {
     List<Employee> fetchEmployeeList();
 
     Employee fetchEmployeeById(Long employeeId) throws EmployeeNotFoundException;
+
+    void deleteEmployeeById(Long employeeId);
 }
