@@ -22,7 +22,7 @@ public class Department {
             allocationSize = 1
     )
     @GeneratedValue(
-            strategy = GenerationType.AUTO,
+            strategy = GenerationType.SEQUENCE,
             generator = "department_sequence"
     )
     private Long departmentId;

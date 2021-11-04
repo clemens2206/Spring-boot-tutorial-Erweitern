@@ -22,7 +22,7 @@ public class Employee {
             allocationSize = 1
     )
     @GeneratedValue(
-            strategy = GenerationType.AUTO,
+            strategy = GenerationType.SEQUENCE,
             generator = "employee_sequence"
     )
     private Long employeeId;
