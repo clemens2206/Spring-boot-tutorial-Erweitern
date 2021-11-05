@@ -1,7 +1,10 @@
 package com.dailycodebuffer.Springboot.tutorial.service;
 
+import com.dailycodebuffer.Springboot.tutorial.entity.Department;
 import com.dailycodebuffer.Springboot.tutorial.entity.Employee;
+import com.dailycodebuffer.Springboot.tutorial.error.DepartmentNotFoundException;
 import com.dailycodebuffer.Springboot.tutorial.error.EmployeeNotFoundException;
+import com.dailycodebuffer.Springboot.tutorial.repository.DepartmentRepository;
 import com.dailycodebuffer.Springboot.tutorial.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,9 +19,25 @@ public class EmployeeServiceImpl implements EmployeeService{
     @Autowired
     private EmployeeRepository employeeRepository;
 
+    private DepartmentRepository departmentRepository;
+
     @Override
-    public Employee saveEmployee(Employee employee) {
-        return employeeRepository.save(employee);
+    public Employee saveEmployee(EmployeeDTO employee) throws DepartmentNotFoundException {
+
+        Optional<Department> department = departmentRepository.findById(employee.getDepartmentId());
+
+        if(!department.isPresent()){
+            throw new DepartmentNotFoundException("Department Not Availabel");
+        }
+
+        Employee employeeOptional = Employee.builder()
+                .employeeId(employee.getEmployeeId())
+                .employeeLastName(employee.getEmployeeLastName())
+                .employeeFirstName(employee.getEmployeeFirstName())
+                .department(department.get())
+                .build();
+
+        return employeeRepository.save(employeeOptional);
     }
 
     @Override

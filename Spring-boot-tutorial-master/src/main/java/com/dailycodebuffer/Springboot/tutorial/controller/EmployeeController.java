@@ -3,6 +3,7 @@ package com.dailycodebuffer.Springboot.tutorial.controller;
 import com.dailycodebuffer.Springboot.tutorial.entity.Employee;
 import com.dailycodebuffer.Springboot.tutorial.error.EmployeeNotFoundException;
 import com.dailycodebuffer.Springboot.tutorial.repository.EmployeeRepository;
+import com.dailycodebuffer.Springboot.tutorial.service.EmployeeDTO;
 import com.dailycodebuffer.Springboot.tutorial.service.EmployeeService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,7 +22,7 @@ public class EmployeeController {
     private final Logger LOGGER = LoggerFactory.getLogger(EmployeeController.class);
 
     @PostMapping("/employees")
-    public Employee saveEmployee(@Valid @RequestBody Employee employee){
+    public Employee saveEmployee( @RequestBody EmployeeDTO employee){
         LOGGER.info("Inside saveEmployee of EmloyeeController");
         return employeeService.saveEmployee(employee);
     }
