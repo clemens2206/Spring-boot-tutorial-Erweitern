@@ -31,14 +31,15 @@ public class Department {
     private String departmentAddress;
     private String departmentCode;
 
- @OneToMany(
+ /*@OneToMany(
             cascade = CascadeType.ALL
     )
 @JoinColumn(
         name = "department_id",
         referencedColumnName = "departmentId"
 )
-    private List<Employee> employeeList;
+    private List<Employee> employeeList;    */
+
 
 
 }

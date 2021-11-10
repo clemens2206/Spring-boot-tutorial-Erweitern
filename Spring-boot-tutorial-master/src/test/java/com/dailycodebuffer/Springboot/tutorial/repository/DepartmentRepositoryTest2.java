@@ -33,13 +33,13 @@ class DepartmentRepositoryTest2 {
             .employeeLastName("Falch")
             .build();
 
-
+/*
     Department department = Department.builder()
             .departmentCode("IT-10")
             .departmentName("IT")
             .departmentAddress("London")
-            .employeeList(List.of(employee1, employee2, employee3)).build();
+           // .employeeList(List.of(employee1, employee2, employee3)).build();
 
-            departmentRepository.save(department);
+            departmentRepository.save(department);*/
    }
 }
