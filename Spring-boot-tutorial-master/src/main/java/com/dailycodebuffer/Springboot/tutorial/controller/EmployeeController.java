@@ -20,17 +20,17 @@ public class EmployeeController {
     @Autowired
     private EmployeeService employeeService;
 
-    //private final Logger LOGGER = LoggerFactory.getLogger(EmployeeController.class);
+    private final Logger LOGGER = LoggerFactory.getLogger(EmployeeController.class);
 
     @PostMapping("/employees")
     public Employee saveEmployee(@RequestBody EmployeeDTO employee) throws DepartmentNotFoundException {
-        //LOGGER.info("Inside saveEmployee of EmloyeeController");
+        LOGGER.info("Inside saveEmployee of EmloyeeController");
         return employeeService.saveEmployee(employee);
     }
 
     @GetMapping("/employees")
     public List<Employee> fetchEmployeeList(){
-        //LOGGER.info("Inside fetchEmployeeList of EmployeeController");
+        LOGGER.info("Inside fetchEmployeeList of EmployeeController");
         return employeeService.fetchEmployeeList();
     }
 
