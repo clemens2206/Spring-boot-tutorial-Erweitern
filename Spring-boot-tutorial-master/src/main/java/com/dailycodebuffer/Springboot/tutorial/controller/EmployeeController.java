@@ -1,6 +1,7 @@
 package com.dailycodebuffer.Springboot.tutorial.controller;
 
 import com.dailycodebuffer.Springboot.tutorial.entity.Employee;
+import com.dailycodebuffer.Springboot.tutorial.error.DepartmentNotFoundException;
 import com.dailycodebuffer.Springboot.tutorial.error.EmployeeNotFoundException;
 import com.dailycodebuffer.Springboot.tutorial.repository.EmployeeRepository;
 import com.dailycodebuffer.Springboot.tutorial.service.EmployeeDTO;
@@ -19,17 +20,17 @@ public class EmployeeController {
     @Autowired
     private EmployeeService employeeService;
 
-    private final Logger LOGGER = LoggerFactory.getLogger(EmployeeController.class);
+    //private final Logger LOGGER = LoggerFactory.getLogger(EmployeeController.class);
 
     @PostMapping("/employees")
-    public Employee saveEmployee( @RequestBody EmployeeDTO employee){
-        LOGGER.info("Inside saveEmployee of EmloyeeController");
+    public Employee saveEmployee(@RequestBody EmployeeDTO employee) throws DepartmentNotFoundException {
+        //LOGGER.info("Inside saveEmployee of EmloyeeController");
         return employeeService.saveEmployee(employee);
     }
 
     @GetMapping("/employees")
     public List<Employee> fetchEmployeeList(){
-        LOGGER.info("Inside fetchEmployeeList of EmployeeController");
+        //LOGGER.info("Inside fetchEmployeeList of EmployeeController");
         return employeeService.fetchEmployeeList();
     }
 
